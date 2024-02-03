@@ -1,0 +1,17 @@
+{
+  "users": [
+    {
+      "name": "karthick",
+      "email": "jolly@gmail.com",
+      "employment": "chef",
+      "gender": "male",
+      "languages": [
+        "tamil",
+        "english",
+        "hindi"
+      ],
+      "comment": "all good",
+      "id": 1
+    }
+  ]
+}

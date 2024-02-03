@@ -1,21 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function UserCreate() {
 
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        employment: 'chef',
-        gender: 'female',
-        languages: ['english'],
+        employment: '',
+        gender: '',
+        languages: [],
         comment: ''
     })
 
+    const createUser = async (formData) => {
+
+        const response = await axios.post('http://localhost:3005/users', {
+            name: formData.name,
+            email: formData.email,
+            employment: formData.employment,
+            gender: formData.gender,
+            languages: formData.languages,
+            comment: formData.comment
+        })
+        setFormData(response.data)
+    }
+
+    // const fetchUser = async () => {
+    //     const response = await axios.get('http://localhost:3005/users');
+    //     console.log({ response })
+    //     setFormData(response.data)
+    // }
+
+    // useEffect(() => {
+    //     fetchUser();
+    // }, [])
+
+
     const handleOnChange = (e) => {
-        console.log(e)
 
         if (e.target.type === 'checkbox') {
-            console.log("yes")
             let stateCopy = { ...formData }
             if (e.target.checked) {
                 stateCopy.languages.push(e.target.value)
@@ -32,11 +55,19 @@ function UserCreate() {
                 [name]: value
             }))
         }
+
+        // const { value, name, type, checked } = e.target;
+
+        // setFormData((state) => ({
+        //     ...state,
+        //     [name]: type === 'checkbox' ? checked : value
+        // }))
+
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("forms:", formData)
+        createUser(formData)
     }
 
     return (
@@ -77,19 +108,19 @@ function UserCreate() {
                     </fieldset>
                     <div className="mb-1">
                         <input onChange={ handleOnChange } type="checkbox" value="tamil" name="languages" id="tamil"
-                            checked={ formData.languages.indexOf('tamil') !== -1 }
+                            checked={ formData.languages.indexOf("tamil") !== -1 }
                         />
                         <label className="px-2" htmlFor="tamil">Tamil</label>
                     </div>
                     <div className="mb-1">
                         <input onChange={ handleOnChange } type="checkbox" value="english" name="languages" id="english"
-                            checked={ formData.languages.indexOf('english') !== -1 }
+                            checked={ formData.languages.indexOf("english") !== -1 }
                         />
                         <label className="px-2" htmlFor="english">English</label>
                     </div>
                     <div className="mb-1">
                         <input onChange={ handleOnChange } type="checkbox" value="hindi" name="languages" id="hindi"
-                            checked={ formData.languages.indexOf('hindi') !== -1 }
+                            checked={ formData.languages.indexOf("hindi") !== -1 }
                         />
                         <label className="px-2" htmlFor="hindi">Hindi</label>
                     </div>
