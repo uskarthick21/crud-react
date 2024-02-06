@@ -26,13 +26,21 @@ function UserCreate() {
             comment: formData.comment
         })
         setUsers([...users, response.data]);
-        setFormData({...initialState, languages: []});
+        setFormData({ ...initialState, languages: [] });
     }
 
     const fetchUser = async () => {
         const response = await axios.get('http://localhost:3002/users');
         console.log({ response })
         setUsers(response.data);
+    }
+
+    const deleteUser = async (userId) => {
+        await axios.delete(`http://localhost:3002/users/${ userId }`)
+        const updateUser = users.filter((user) => {
+            return user.id !== userId
+        })
+        setUsers(updateUser)
     }
 
     useEffect(() => {
@@ -59,14 +67,11 @@ function UserCreate() {
                 [name]: value
             }))
         }
+    }
 
-        // const { value, name, type, checked } = e.target;
-
-        // setFormData((state) => ({
-        //     ...state,
-        //     [name]: type === 'checkbox' ? checked : value
-        // }))
-
+    const handleDelete = (userId) => {
+        console.log("userID:", userId)
+        deleteUser(userId)
     }
 
     const handleSubmit = (e) => {
@@ -75,7 +80,7 @@ function UserCreate() {
     }
 
 
-    const renderHeader = () => Object.keys(users[0]).map(col => <th>{col}</th>)
+    const renderHeader = () => Object.keys(users[0]).map(col => <th>{ col }</th>)
 
     const renderRows = () => {
         const columns = Object.keys(users[0]);
@@ -85,27 +90,35 @@ function UserCreate() {
         for (let i = 0; i < r; i++) {
             const col = [];
             for (let j = 0; j < c; j++) {
-                col.push(<td className="td">{users[i][columns[j]]}</td>)
+                col.push(<td className="td">
+                    { users[i][columns[j]] }
+                </td>)
             }
-            items.push(<tr className="tr">{col}</tr>)
+            items.push(
+                <tr className="tr">
+                    { col }
+                    <div onClick={ () => handleDelete(users[i].id) }>Delete</div>
+                    <div>Edit</div>
+                </tr>
+            )
         }
         return items;
     }
 
     return (
         <div className="h-screen flex items-center justify-center">
-            <form onSubmit={handleSubmit} className="w-full md:w-1/3 bg-white rounded-lg items-center">
+            <form onSubmit={ handleSubmit } className="w-full md:w-1/3 bg-white rounded-lg items-center">
                 <div className="w-full mb-3">
                     <label className="font-semibold" htmlFor="userName">Name</label>
-                    <input className="px-2 w-full border rounded py-2 text-gray-700 focus:outline-none items-center" id="name" onChange={handleOnChange} name="name" value={formData.name} />
+                    <input className="px-2 w-full border rounded py-2 text-gray-700 focus:outline-none items-center" id="name" onChange={ handleOnChange } name="name" value={ formData.name } />
                 </div>
                 <div className="w-full mb-3">
                     <label className="font-semibold" htmlFor="email">Email</label>
-                    <input className="px-2 w-full border rounded py-2 text-gray-700 focus:outline-none items-center" id="email" onChange={handleOnChange} name="email" value={formData.email} />
+                    <input className="px-2 w-full border rounded py-2 text-gray-700 focus:outline-none items-center" id="email" onChange={ handleOnChange } name="email" value={ formData.email } />
                 </div>
                 <div className="w-full mb-3">
                     <label className="font-semibold" htmlFor="employment">Employment</label>
-                    <select className="px-2 py-2 border rounded w-full text-gray-700 focus:outline-none items-center" onChange={handleOnChange} value={formData.employment} name="employment" id="employment">
+                    <select className="px-2 py-2 border rounded w-full text-gray-700 focus:outline-none items-center" onChange={ handleOnChange } value={ formData.employment } name="employment" id="employment">
                         <option value="software">--Select--</option>
                         <option value="software">Software</option>
                         <option value="chef">Chef</option>
@@ -116,11 +129,11 @@ function UserCreate() {
                     <fieldset>
                         <legend className="font-semibold">Gender</legend>
                         <div className=" mb-1">
-                            <input onChange={handleOnChange} type="radio" value="male" id="male" name="gender" checked={formData.gender === "male"} />
+                            <input onChange={ handleOnChange } type="radio" value="male" id="male" name="gender" checked={ formData.gender === "male" } />
                             <label className="px-2" htmlFor="male">Male</label>
                         </div>
                         <div className="mb-1">
-                            <input onChange={handleOnChange} type="radio" value="female" id="female" name="gender" checked={formData.gender === "female"} />
+                            <input onChange={ handleOnChange } type="radio" value="female" id="female" name="gender" checked={ formData.gender === "female" } />
                             <label className="px-2" htmlFor="female">Female</label>
                         </div>
                     </fieldset>
@@ -130,20 +143,20 @@ function UserCreate() {
                         <legend className="font-semibold">Employment</legend>
                     </fieldset>
                     <div className="mb-1">
-                        <input onChange={handleOnChange} type="checkbox" value="tamil" name="languages" id="tamil"
-                            checked={formData.languages?.indexOf("tamil") !== -1}
+                        <input onChange={ handleOnChange } type="checkbox" value="tamil" name="languages" id="tamil"
+                            checked={ formData.languages?.indexOf("tamil") !== -1 }
                         />
                         <label className="px-2" htmlFor="tamil">Tamil</label>
                     </div>
                     <div className="mb-1">
-                        <input onChange={handleOnChange} type="checkbox" value="english" name="languages" id="english"
-                            checked={formData.languages?.indexOf("english") !== -1}
+                        <input onChange={ handleOnChange } type="checkbox" value="english" name="languages" id="english"
+                            checked={ formData.languages?.indexOf("english") !== -1 }
                         />
                         <label className="px-2" htmlFor="english">English</label>
                     </div>
                     <div className="mb-1">
-                        <input onChange={handleOnChange} type="checkbox" value="hindi" name="languages" id="hindi"
-                            checked={formData.languages?.indexOf("hindi") !== -1}
+                        <input onChange={ handleOnChange } type="checkbox" value="hindi" name="languages" id="hindi"
+                            checked={ formData.languages?.indexOf("hindi") !== -1 }
                         />
                         <label className="px-2" htmlFor="hindi">Hindi</label>
                     </div>
@@ -152,22 +165,22 @@ function UserCreate() {
                     <label className="font-semibold" htmlFor="comment">
                         Comments
                     </label>
-                    <textarea className="px-2 py-2 rounded border text-gray-700 focus:outline-none items-center w-full" onChange={handleOnChange} value={formData.comment} name="comment" id="comment" >
+                    <textarea className="px-2 py-2 rounded border text-gray-700 focus:outline-none items-center w-full" onChange={ handleOnChange } value={ formData.comment } name="comment" id="comment" >
                     </textarea>
                 </div>
                 <div>
                     <button type="submit" className="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">Submit</button>
                 </div>
             </form>
-<br/>
+            <br />
 
             {
                 users && users.length > 0 && <table>
                     <thead>
-                        <tr>{renderHeader()}</tr>
+                        <tr>{ renderHeader() }</tr>
                     </thead>
                     <tbody>
-                        {renderRows()}
+                        { renderRows() }
                     </tbody>
                 </table>
             }

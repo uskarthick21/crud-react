@@ -1,29 +1,16 @@
 {
   "users": [
     {
-      "name": "karthick",
-      "email": "jolly@gmail.com",
-      "employment": "chef",
+      "name": "kumar",
+      "email": "karthic@gmail.com",
+      "employment": "accountant",
       "gender": "male",
       "languages": [
         "tamil",
         "english",
         "hindi"
       ],
-      "comment": "all good",
-      "id": 1
-    },
-    {
-      "name": "prabhu",
-      "email": "prabhu@gmail.com",
-      "employment": "chef",
-      "gender": "male",
-      "languages": [
-        "tamil",
-        "english",
-        "hindi"
-      ],
-      "comment": "dwsdwd",
+      "comment": "cheese cake",
       "id": 2
     }
   ]
