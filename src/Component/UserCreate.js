@@ -1,47 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-
-const initialState = {
-    name: '',
-    email: '',
-    employment: '',
-    gender: '',
-    languages: [],
-    comment: ''
-};
+import React, { useState, useEffect, useContext } from 'react';
+import UsersContext from '../context/users'
 
 function UserCreate() {
-
+    const { initialState, fetchUser, createUser } = useContext(UsersContext)
     const [formData, setFormData] = useState(initialState);
-
-    const [users, setUsers] = useState([]);
-
-    const createUser = async (formData) => {
-        const response = await axios.post('http://localhost:3002/users', {
-            name: formData.name,
-            email: formData.email,
-            employment: formData.employment,
-            gender: formData.gender,
-            languages: formData.languages,
-            comment: formData.comment
-        })
-        setUsers([...users, response.data]);
-        setFormData({ ...initialState, languages: [] });
-    }
-
-    const fetchUser = async () => {
-        const response = await axios.get('http://localhost:3002/users');
-        console.log({ response })
-        setUsers(response.data);
-    }
-
-    const deleteUser = async (userId) => {
-        await axios.delete(`http://localhost:3002/users/${ userId }`)
-        const updateUser = users.filter((user) => {
-            return user.id !== userId
-        })
-        setUsers(updateUser)
-    }
 
     useEffect(() => {
         setFormData(initialState);
@@ -69,41 +31,42 @@ function UserCreate() {
         }
     }
 
-    const handleDelete = (userId) => {
-        console.log("userID:", userId)
-        deleteUser(userId)
-    }
+    // const handleDelete = (userId) => {
+    //     console.log("userID:", userId)
+    //     deleteUser(userId)
+    // }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         createUser(formData)
+        setFormData({ ...initialState, languages: [] });
     }
 
 
-    const renderHeader = () => Object.keys(users[0]).map(col => <th>{ col }</th>)
+    // const renderHeader = () => Object.keys(users[0]).map(col => <th>{ col }</th>)
 
-    const renderRows = () => {
-        const columns = Object.keys(users[0]);
-        const c = columns.length;
-        const r = users.length;
-        const items = [];
-        for (let i = 0; i < r; i++) {
-            const col = [];
-            for (let j = 0; j < c; j++) {
-                col.push(<td className="td">
-                    { users[i][columns[j]] }
-                </td>)
-            }
-            items.push(
-                <tr className="tr">
-                    { col }
-                    <div onClick={ () => handleDelete(users[i].id) }>Delete</div>
-                    <div>Edit</div>
-                </tr>
-            )
-        }
-        return items;
-    }
+    // const renderRows = () => {
+    //     const columns = Object.keys(users[0]);
+    //     const c = columns.length;
+    //     const r = users.length;
+    //     const items = [];
+    //     for (let i = 0; i < r; i++) {
+    //         const col = [];
+    //         for (let j = 0; j < c; j++) {
+    //             col.push(<td className="td">
+    //                 { users[i][columns[j]] }
+    //             </td>)
+    //         }
+    //         items.push(
+    //             <tr className="tr">
+    //                 { col }
+    //                 <div onClick={ () => handleDelete(users[i].id) }>Delete</div>
+    //                 <div>Edit</div>
+    //             </tr>
+    //         )
+    //     }
+    //     return items;
+    // }
 
     return (
         <div className="h-screen flex items-center justify-center">
@@ -174,7 +137,7 @@ function UserCreate() {
             </form>
             <br />
 
-            {
+            {/* {
                 users && users.length > 0 && <table>
                     <thead>
                         <tr>{ renderHeader() }</tr>
@@ -183,7 +146,7 @@ function UserCreate() {
                         { renderRows() }
                     </tbody>
                 </table>
-            }
+            } */}
         </div>
 
     )

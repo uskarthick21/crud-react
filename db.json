@@ -12,6 +12,31 @@
       ],
       "comment": "cheese cake",
       "id": 2
+    },
+    {
+      "name": "kannan",
+      "email": "kannan@gmail.com",
+      "employment": "chef",
+      "gender": "male",
+      "languages": [
+        "english",
+        "tamil"
+      ],
+      "comment": "Good Chef",
+      "id": 3
+    },
+    {
+      "name": "udaya",
+      "email": "udaya Kumar",
+      "employment": "accountant",
+      "gender": "female",
+      "languages": [
+        "tamil",
+        "english",
+        "hindi"
+      ],
+      "comment": "good Accountant",
+      "id": 4
     }
   ]
 }
