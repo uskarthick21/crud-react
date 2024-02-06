@@ -31,7 +31,6 @@ function Provider({ children }) {
 
     const fetchUser = async () => {
         const response = await axios.get('http://localhost:3002/users');
-        console.log({ response })
         setUsers(response.data);
     }
 
@@ -45,6 +44,7 @@ function Provider({ children }) {
 
     const valuesToShare = {
         initialState,
+        users,
         createUser,
         fetchUser,
         deleteUser

@@ -2,13 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import UsersContext from '../context/users'
 
 function UserCreate() {
-    const { initialState, fetchUser, createUser } = useContext(UsersContext)
+    const { initialState, createUser } = useContext(UsersContext)
     const [formData, setFormData] = useState(initialState);
-
-    useEffect(() => {
-        setFormData(initialState);
-        fetchUser();
-    }, [])
 
 
     const handleOnChange = (e) => {
@@ -40,33 +35,11 @@ function UserCreate() {
         e.preventDefault();
         createUser(formData)
         setFormData({ ...initialState, languages: [] });
+
     }
 
 
-    // const renderHeader = () => Object.keys(users[0]).map(col => <th>{ col }</th>)
 
-    // const renderRows = () => {
-    //     const columns = Object.keys(users[0]);
-    //     const c = columns.length;
-    //     const r = users.length;
-    //     const items = [];
-    //     for (let i = 0; i < r; i++) {
-    //         const col = [];
-    //         for (let j = 0; j < c; j++) {
-    //             col.push(<td className="td">
-    //                 { users[i][columns[j]] }
-    //             </td>)
-    //         }
-    //         items.push(
-    //             <tr className="tr">
-    //                 { col }
-    //                 <div onClick={ () => handleDelete(users[i].id) }>Delete</div>
-    //                 <div>Edit</div>
-    //             </tr>
-    //         )
-    //     }
-    //     return items;
-    // }
 
     return (
         <div className="h-screen flex items-center justify-center">
