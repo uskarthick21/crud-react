@@ -7,7 +7,7 @@ function App() {
     const { fetchUser } = useContext(UsersContext)
     useEffect(() => {
         fetchUser();
-    }, [])
+    }, [fetchUser])
 
     return (
         <div>

@@ -6,48 +6,23 @@
       "employment": "software",
       "gender": "female",
       "languages": [
-        "tamil",
+        "hindi",
         "english"
       ],
-      "comment": "",
+      "comment": "sfsaf",
       "id": 1
     },
     {
-      "name": "karthick s",
-      "email": "saravanakarthick042@gmail.com",
-      "employment": "chef",
-      "gender": "female",
-      "languages": [
-        "tamil",
-        "english",
-        "hindi"
-      ],
-      "comment": "sadfasfsad",
-      "id": 2
-    },
-    {
-      "name": "karthick s",
+      "name": "geetha",
       "email": "karthic@gmail.com",
-      "employment": "accountant",
-      "gender": "",
-      "languages": [
-        "english",
-        "hindi"
-      ],
-      "comment": "",
-      "id": 3
-    },
-    {
-      "name": "karth sarav",
-      "email": "uskarthick89@gmail.com",
-      "employment": "chef",
+      "employment": "software",
       "gender": "male",
       "languages": [
         "tamil",
         "english"
       ],
-      "comment": "dsgsdgds",
-      "id": 4
+      "comment": "safsafa",
+      "id": 2
     }
   ]
 }

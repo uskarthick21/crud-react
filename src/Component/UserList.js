@@ -4,10 +4,11 @@ import SingleUser from '../Component/SingleUser'
 
 function UserList() {
 
-    const { users } = useContext(UsersContext)
+    const { users } = useContext(UsersContext);
+
     const renderHeader = () => {
         let tableHeader = Object.keys(users[0]).map(col => <th className="border-r px-6 py-4 dark:border-neutral-500" key={ col }>{ col }</th>)
-        // tableHeader.push(<th className="border-r px-6 py-4 dark:border-neutral-500" key={ "action" }>Action</th>)
+        tableHeader.push(<th className="border-r px-6 py-4 dark:border-neutral-500" key={ "action" }>Action</th>)
         return tableHeader;
     }
 

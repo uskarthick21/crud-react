@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useCallback } from 'react';
 import axios from 'axios';
 
 const UsersContext = createContext();
@@ -26,13 +26,12 @@ function Provider({ children }) {
             comment: formData.comment
         })
         setUsers([...users, response.data]);
-
     }
 
-    const fetchUser = async () => {
+    const fetchUser = useCallback(async () => {
         const response = await axios.get('http://localhost:3002/users');
         setUsers(response.data);
-    }
+    }, [])
 
     const deleteUser = async (userId) => {
         await axios.delete(`http://localhost:3002/users/${ userId }`)
