@@ -6,6 +6,7 @@ const UsersContext = createContext();
 function Provider({ children }) {
 
     const [users, setUsers] = useState([]);
+    const [showModal, setShowModal] = useState(false);
 
     const initialState = {
         name: '',
@@ -46,7 +47,10 @@ function Provider({ children }) {
         users,
         createUser,
         fetchUser,
-        deleteUser
+        deleteUser,
+        showModal,
+        setShowModal
+
     }
 
     return (

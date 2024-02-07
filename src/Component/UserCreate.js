@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import UsersContext from '../context/users'
 
 function UserCreate() {
-    const { initialState, createUser } = useContext(UsersContext)
+    const { initialState, createUser, setShowModal } = useContext(UsersContext)
     const [formData, setFormData] = useState(initialState);
 
 
@@ -26,24 +26,16 @@ function UserCreate() {
         }
     }
 
-    // const handleDelete = (userId) => {
-    //     console.log("userID:", userId)
-    //     deleteUser(userId)
-    // }
-
     const handleSubmit = (e) => {
         e.preventDefault();
         createUser(formData)
         setFormData({ ...initialState, languages: [] });
-
+        setShowModal(false);
     }
 
-
-
-
     return (
-        <div className="h-screen flex items-center justify-center">
-            <form onSubmit={ handleSubmit } className="w-full md:w-1/3 bg-white rounded-lg items-center">
+        <div className="flex items-center justify-center">
+            <form onSubmit={ handleSubmit } className="w-full md:w-2/3 bg-white rounded-lg items-center">
                 <div className="w-full mb-3">
                     <label className="font-semibold" htmlFor="userName">Name</label>
                     <input className="px-2 w-full border rounded py-2 text-gray-700 focus:outline-none items-center" id="name" onChange={ handleOnChange } name="name" value={ formData.name } />
