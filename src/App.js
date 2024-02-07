@@ -1,13 +1,12 @@
-import React, { useEffect, useContext, useState } from 'react'
-import UserCreate from './Component/UserCreate';
-import UpdateUser from './Component/UpdateUser';
+import React, { useEffect, useContext } from 'react'
+import Form from './Component/Form';
 import UserList from './Component/UserList';
 import UsersContext from './context/users';
 import Modal from './Component/Modal';
 
 function App() {
 
-    const { fetchUser, setShowModal, showModal, showCreateModal, setShowCreateModal, showUpdateModal, setShowUpdateModal, user } = useContext(UsersContext)
+    const { fetchUser, setShowModal, showModal, showCreateModal, setShowCreateModal, showUpdateModal, setShowUpdateModal, createUser, updateUser, initialState, user, userId } = useContext(UsersContext)
 
     useEffect(() => {
         fetchUser();
@@ -25,14 +24,12 @@ function App() {
         setShowCreateModal(false);
     }
 
-
-
     let createUserModal = <Modal onClose={ handleClose }>
-        <UserCreate />
+        <Form action={ createUser } data={ initialState } />
     </Modal>
 
     let updateUsermodal = <Modal onClose={ handleClose }>
-        <UpdateUser user={ user } />
+        <Form action={ updateUser } data={ user } userId={ userId } />
     </Modal>
 
 

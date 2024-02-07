@@ -1,66 +1,52 @@
 {
   "users": [
     {
-      "name": "prahbu test",
-      "email": "prabhu@gmail.com",
-      "employment": "accountant",
-      "gender": "female",
-      "languages": [
-        "english",
-        "hindi"
-      ],
-      "comment": "updated good",
-      "id": 3
-    },
-    {
-      "name": "geetha",
-      "email": "geetha@gmail.com",
-      "employment": "software",
-      "gender": "male",
-      "languages": [
-        "tamil",
-        "english"
-      ],
-      "comment": "all good",
-      "id": 4
-    },
-    {
-      "name": "karthick",
-      "email": "uskarthick89@gmail.com",
-      "employment": "software",
+      "name": "karthick udayak",
+      "email": "uskarthick89@gmail.comddd",
+      "employment": "chef",
       "gender": "male",
       "languages": [
         "english",
         "tamil"
       ],
-      "comment": "sdfdsf",
+      "comment": "all seee",
       "id": 5
     },
     {
-      "name": "sara",
-      "email": "sf",
-      "employment": "software",
+      "name": "karthick s",
+      "email": "karthic@gmail.com",
+      "employment": "chef",
       "gender": "female",
       "languages": [
         "tamil",
-        "english",
-        "hindi"
+        "english"
       ],
-      "comment": "sfsdafas",
-      "id": 7
+      "comment": "serew",
+      "id": 9
     },
     {
-      "name": "dell",
-      "email": "dell@gmail.com",
-      "employment": "accountant",
-      "gender": "male",
+      "name": "latha kjim",
+      "email": "latha@gmail.com",
+      "employment": "chef",
+      "gender": "female",
       "languages": [
         "tamil",
-        "english",
-        "hindi"
+        "english"
       ],
-      "comment": "my dell",
-      "id": 8
+      "comment": "good girl",
+      "id": 10
+    },
+    {
+      "name": "durga",
+      "email": "durga@gmail.com",
+      "employment": "chef",
+      "gender": "female",
+      "languages": [
+        "tamil",
+        "english"
+      ],
+      "comment": "good boy",
+      "id": 11
     }
   ]
 }
