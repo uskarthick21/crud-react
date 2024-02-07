@@ -26,7 +26,7 @@ function UserList() {
                 </td>)
             }
             items.push(
-                <SingleUser key={ users[i].id } col={ col } userId={ users[i].id } />
+                <SingleUser key={ users[i].id } col={ col } userId={ users[i].id } user={ users[i] } />
             )
         }
         return items;

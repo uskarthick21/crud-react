@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
 import UsersContext from '../context/users'
 
-function UserCreate() {
-    const { initialState, createUser, setShowModal, setShowUpdateModal, setShowCreateModal } = useContext(UsersContext)
-    const [formData, setFormData] = useState(initialState);
+function UpdateUser() {
+
+    const { user, userId, initialState, setShowModal, setShowUpdateModal, setShowCreateModal, updateUser } = useContext(UsersContext)
+    const [formData, setFormData] = useState(user);
 
 
     const handleOnChange = (e) => {
@@ -28,7 +29,7 @@ function UserCreate() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        createUser(formData)
+        updateUser(userId, formData);
         setFormData({ ...initialState, languages: [] });
         setShowModal(false);
         setShowUpdateModal(false)
@@ -49,7 +50,7 @@ function UserCreate() {
                 <div className="w-full mb-3">
                     <label className="font-semibold" htmlFor="employment">Employment</label>
                     <select className="px-2 py-2 border rounded w-full text-gray-700 focus:outline-none items-center" onChange={ handleOnChange } value={ formData.employment } name="employment" id="employment">
-                        <option value="software">--Select--</option>
+                        <option value="select">--Select--</option>
                         <option value="software">Software</option>
                         <option value="chef">Chef</option>
                         <option value="accountant">Accountant</option>
@@ -103,20 +104,9 @@ function UserCreate() {
                 </div>
             </form>
             <br />
-
-            {/* {
-                users && users.length > 0 && <table>
-                    <thead>
-                        <tr>{ renderHeader() }</tr>
-                    </thead>
-                    <tbody>
-                        { renderRows() }
-                    </tbody>
-                </table>
-            } */}
         </div>
 
     )
 }
 
-export default UserCreate;
+export default UpdateUser;

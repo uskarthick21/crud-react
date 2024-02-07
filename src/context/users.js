@@ -7,6 +7,10 @@ function Provider({ children }) {
 
     const [users, setUsers] = useState([]);
     const [showModal, setShowModal] = useState(false);
+    const [showCreateModal, setShowCreateModal] = useState(false);
+    const [showUpdateModal, setShowUpdateModal] = useState(false);
+    const [user, setUser] = useState();
+    const [userId, setUserId] = useState();
 
     const initialState = {
         name: '',
@@ -42,6 +46,25 @@ function Provider({ children }) {
         setUsers(updateUser)
     }
 
+    const updateUser = async (userId, user) => {
+        console.log({ userId, user })
+        const response = await axios.put(`http://localhost:3002/users/${ userId }`, {
+            name: user.name,
+            email: user.email,
+            employment: user.employment,
+            gender: user.gender,
+            languages: user.languages,
+            comment: user.comment
+        })
+        const userUpdate = users.map((user) => {
+            if (user.id === userId) {
+                return { ...user, ...response.data }
+            }
+            return user
+        })
+        setUsers(userUpdate)
+    }
+
     const valuesToShare = {
         initialState,
         users,
@@ -49,8 +72,16 @@ function Provider({ children }) {
         fetchUser,
         deleteUser,
         showModal,
-        setShowModal
-
+        setShowModal,
+        showCreateModal,
+        setShowCreateModal,
+        showUpdateModal,
+        setShowUpdateModal,
+        user,
+        setUser,
+        updateUser,
+        userId,
+        setUserId
     }
 
     return (
