@@ -1,30 +1,6 @@
 {
   "users": [
     {
-      "name": "karthick udayak",
-      "email": "uskarthick89@gmail.comddd",
-      "employment": "chef",
-      "gender": "male",
-      "languages": [
-        "english",
-        "tamil"
-      ],
-      "comment": "all seee",
-      "id": 5
-    },
-    {
-      "name": "karthick s",
-      "email": "karthic@gmail.com",
-      "employment": "chef",
-      "gender": "female",
-      "languages": [
-        "tamil",
-        "english"
-      ],
-      "comment": "serew",
-      "id": 9
-    },
-    {
       "name": "latha kjim",
       "email": "latha@gmail.com",
       "employment": "chef",
@@ -33,19 +9,20 @@
         "tamil",
         "english"
       ],
-      "comment": "good girl",
+      "comment": "good girldssfsdf",
       "id": 10
     },
     {
-      "name": "durga",
-      "email": "durga@gmail.com",
-      "employment": "chef",
-      "gender": "female",
+      "name": "karthick",
+      "email": "jolly@gmail.com",
+      "employment": "software",
+      "gender": "male",
       "languages": [
+        "english",
         "tamil",
-        "english"
+        "hindi"
       ],
-      "comment": "good boy",
+      "comment": "safsadfsaf",
       "id": 11
     }
   ]

@@ -15,7 +15,6 @@ function App() {
     const handleCreateUserClick = () => {
         setShowModal(!showModal);
         setShowCreateModal(!showCreateModal);
-        setShowUpdateModal(false)
     }
 
     const handleClose = () => {
@@ -34,9 +33,9 @@ function App() {
 
 
     return (
-        <div>
-            <div className="w-full max-w-5xl m-auto">
-                <button onClick={ handleCreateUserClick }>Create User</button>
+        <div className="main-container">
+            <div className="action-button">
+                <button className="btn btn-create" onClick={ handleCreateUserClick }>Create User</button>
             </div>
 
             { showModal && showCreateModal && createUserModal }

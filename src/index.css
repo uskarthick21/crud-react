@@ -1,3 +1,103 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+} */
+
+.main-container {
+	margin: 30px auto;
+	width: 1200px;
+}
+
+.action-button {
+	margin-bottom: 20px;
+}
+
+.btn {
+	color: #ffffff;
+	padding: 5px;
+}
+.btn-create {
+	background-color: #008000;
+}
+.btn-delete {
+	background-color: #fb0a06;
+	display: inline-block;
+	margin-right: 10px;
+	cursor: pointer;
+}
+.btn-edit {
+	background-color: #002680;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.modal__overlay__container {
+	background-color: rgba(0, 0, 0, 0.7);
+	left: 0;
+	top: 0;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	z-index: 10;
+}
+
+.modal__outer__container {
+	width: 80vw;
+	height: 80vh;
+	background: #ffffff;
+	max-width: 500px;
+	max-height: 500px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 20;
+	transform: translate(-50%, -50%);
+}
+.modal__inner__container {
+	overflow-y: scroll;
+	max-height: 500px;
+	padding: 20px;
+}
+
+.form__container {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.form__element {
+	margin-bottom: 20px;
+	flex: 1 0 100%;
+}
+.form__element:nth-of-type(4),
+.form__element:nth-of-type(5) {
+	flex-basis: 50%;
+}
+
+.form__element label {
+	margin-bottom: 10px;
+}
+
+.btn-close {
+	position: absolute;
+	font-size: 2rem;
+	color: red;
+	top: -15px;
+	z-index: 12;
+	right: -15px;
+	background: #ffffff;
+	border-radius: 25px;
+}
+
+.form__radio,
+.form__checkbox {
+	flex-direction: row;
+}
+
+.form__radio {
+}
+.form__checkbox {
+}

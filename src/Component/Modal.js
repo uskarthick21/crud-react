@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import { MdCancel } from "react-icons/md";
 
 function Modal({ children, onClose }) {
 
@@ -13,14 +14,15 @@ function Modal({ children, onClose }) {
 
     return ReactDOM.createPortal(
         <div>
-            <div onClick={ onClose } className="fixed inset-0 bg-gray-300 opacity-80"></div>
-            <div className="fixed inset-40 p-10 bg-white overflow-y-scroll">
-                <div className="flex flex-col justify-between">
+            <div onClick={ onClose } className="modal__overlay__container"></div>
+            <div className="modal__outer__container">
+                <div className="modal__inner__container">
+                    <button onClick={ onClose } className="btn-close"><MdCancel /></button>
                     { children }
                 </div>
             </div>
         </div>,
-        document.querySelector('.modal-container')
+        document.querySelector('.modal')
     )
 }
 

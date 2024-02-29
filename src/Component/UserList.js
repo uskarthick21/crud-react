@@ -7,8 +7,8 @@ function UserList() {
     const { users } = useContext(UsersContext);
 
     const renderHeader = () => {
-        let tableHeader = Object.keys(users[0]).map(col => <th className="border-r px-6 py-4 dark:border-neutral-500" key={ col }>{ col }</th>)
-        tableHeader.push(<th className="border-r px-6 py-4 dark:border-neutral-500" key={ "action" }>Action</th>)
+        let tableHeader = Object.keys(users[0]).map(col => <th className="border-r px-3 py-3 dark:border-neutral-500" key={ col }>{ col }</th>)
+        tableHeader.push(<th className="border-r px-3 py-3 dark:border-neutral-500" key={ "action" }>Action</th>)
         return tableHeader;
     }
 
@@ -35,8 +35,8 @@ function UserList() {
     return (
         (
             users && users.length > 0 && (
-                <div className="relative overflow-x-auto flex justify-center items-center">
-                    <table className="md:w-1/3 border text-center text-sm font-light dark:border-neutral-500">
+                <div className="relative overflow-x-auto justify-center items-center">
+                    <table className="w-full border text-center text-sm font-light dark:border-neutral-500">
                         <thead className="border-b font-medium dark:border-neutral-500">
                             <tr>{ renderHeader() }</tr>
                         </thead>
